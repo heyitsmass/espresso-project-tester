@@ -62,8 +62,8 @@ It is expected for this tester to be inside of this folder hierarchy:
 ## Usage: 
 To get you started: 
 ```
-> ~ % cd parent_folder 
-> parent_folder % python3 tester.py 6 
+> cd parent_folder 
+> python3 tester.py 6 
 ```
 By default this will test every file inside of the `Espresso/GoodTests` folder and create a failed.txt file
 
