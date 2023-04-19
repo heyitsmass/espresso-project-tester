@@ -119,8 +119,9 @@ async def test(file:Path, verbose:bool=False):
       print(f":{err}" if verbose or args.verbose else '')
 
       if type(err) == IndexError: 
-        print(f"\033[31mERROR IN MAIN FILE: \033[0m")
-        print(errData) 
+        print(f"\033[31mERROR IN MAIN FILE\033[0m")
+        if verbose or args.verbose:
+          print(f': {errData}') 
         return file 
     
       if verbose or args.verbose and type(err) != NameError: 
