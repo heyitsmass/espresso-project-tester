@@ -69,7 +69,7 @@ def writeData(data:list, filename:str):
     file.writelines(data) 
 
 
-async def test(file:Path, verbose:bool=False): 
+async def test(file:Path, verbose:bool=False) -> Path: 
   projectDir = f"./Phase{args.phase}"
   print(f"\033[33mTesting {file.name}:\033[0m", end="")
   with open('user', 'w') as user, open('ref', 'w') as ref:
