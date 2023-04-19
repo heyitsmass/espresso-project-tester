@@ -80,7 +80,7 @@ By default this will test every file inside of the `Espresso/GoodTests` folder a
 #### Solution: 
 `chmod +x tester.py`
 
-#### Overlapping filenames: 
+### Overlapping filenames: 
 >Ensure there does not exist the same filename inside of GoodTests and BadTests, if it does the full file path has to be specific; The script will output the potential file path for you if this happens. 
 #### Example: 
 ```
