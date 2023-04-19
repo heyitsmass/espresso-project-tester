@@ -165,7 +165,7 @@ async def main(phase:int=1):
     subfolders = ["GoodTests", "BadTests"] 
 
     for key, value in args._get_kwargs(): 
-      if key in ['phase', 'compile', 'recheck', 'silent']: continue 
+      if key in ['phase', 'compile', 'recheck', 'silent', 'verbose']: continue 
       if value: 
         if key in ["plus", "star", "all"]: 
           folders = options[key] 
