@@ -5,8 +5,8 @@ Robust (phase 6) Espresso Project tester for CS460
 # Features: 
 ## Asynchronous Testing
   > Forces each test to complete before another begins; No jumbled output
-  
-
+## Silent Compilation 
+> Hides the extensive parser building stage outputting to the console, saves on space and focuses you to what's necessary!
 ## Single file checking 
   > Test a single file from the unit_tests folder without having to input the entire directory; will output the full diff 
 ### Usage: 
@@ -14,8 +14,8 @@ Robust (phase 6) Espresso Project tester for CS460
 ### Example: 
  ![Imgur](https://i.imgur.com/m6Hlo3g.png)
 
-  ## Multiple file checking 
-  >  Test all files from a single (or every) folder in unit_tests (default just Espresso) with options for Good and BadTests.
+## Multiple file checking 
+>  Test all files from a single (or every) folder in unit_tests (default just Espresso) with options for Good and BadTests.
 ### Usage: 
    ![Imgur](https://i.imgur.com/idzkiem.png)
 ### Example: 
