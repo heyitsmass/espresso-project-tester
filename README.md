@@ -93,7 +93,7 @@ By default this will test every file inside of the `Espresso/GoodTests` folder a
 
 `> ~ % python3 tester.py 6 -c single ./unit_tests/6/Espresso/GoodTests/Small.java`
 
-## Expected Workflow: 
+## Expected Workflow
 
 The best way the use the script is to run the multiple tests using 
 
@@ -108,3 +108,31 @@ Then once fixing one (ideally multiple) retest the files in failed.txt
 `python3 tester.py 6 -c --silent -r`
 
 This will repopulate the failed.txt file and repeat until no files fail
+
+## Usage Examples
+
+Compile silently, test directories Espresso/GoodTests and Espresso/BadTests 
+
+`python3 tester.py 6 -c --silent` 
+
+\
+Compile silently, test single file  
+
+`python3 tester.py 6 -c --silent single small.java`
+
+\
+Test all GoodTest directories
+
+`python3 tester.py 6 multiple -a -g`
+
+\
+Test star BadTest directories 
+
+`python3 tester.py 6 multiple -s -b` 
+
+\
+Compile Silently, test plus GoodTest and BadTest directories with verbose output 
+
+`python3 tester.py 6 -c -v --silent multiple -p -g -b` 
+
+
