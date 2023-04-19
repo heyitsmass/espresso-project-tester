@@ -45,16 +45,16 @@ It is expected for this tester to be inside of this folder hierarchy:
 ```
  ── parent_folder
     ├── unit_tests
-	│   └── 6
-    |		├── Espresso
-	|		|	└── *.java
-	|		├── Espresso_Plus
-	|		|	└── *.java
-	|		└── Espresso_Star
-	|			└── *.java
+    |   └── 6
+    |	    ├── Espresso
+    |	    |   └── *.java
+    |	    ├── Espresso_Plus
+    |	    |	└── *.java
+    |	    └── Espresso_Star
+    |		└── *.java
     ├── Phase6
-	|	├──	./espressoc
- 	| 	└── ./espressocr
+    |	├── ./espressoc
+    | 	└── ./espressocr
     └── tester.py
 
 ```
