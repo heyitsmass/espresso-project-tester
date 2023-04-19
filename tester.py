@@ -199,7 +199,7 @@ async def main(phase:int=1):
 
       for root, dirs, files in os.walk(tests_dir): 
         for file in files: 
-          if file == args.filename: 
+          if file.lower() == args.filename: 
             if file_loc: 
               raise RuntimeError(f"Multiple file locations found for same file. Retry with exact filepath. \n\t{file_loc}, or \n\t{os.path.join(root, file)}")
              
