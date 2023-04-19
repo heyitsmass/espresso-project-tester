@@ -95,7 +95,7 @@ By default this will test every file inside of the `Espresso/GoodTests` folder a
 
 ## Expected Workflow: 
 
-The best way the use the file is the run the multiple tests using 
+The best way the use the script is to run the multiple tests using 
 
 `python3 tester.py 6 -c --silent`
 
