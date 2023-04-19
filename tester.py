@@ -87,9 +87,8 @@ async def test(file, phase, verbose=False):
           print(f"\033[32m VALID\033[0m")
       
     except Exception as e: 
-      print(f"\033[31mFILE VALIDATION FAILED: \033[0m", end="")
-      if verbose or args.verbose: 
-        print(e)
+      print(f"\033[31mFILE VALIDATION FAILED \033[0m", end="")
+      print(f":{e}" if verbose or args.verbose else '')
 
       if type(e) == IndexError:  
         print(f"\033[31mERROR IN MAIN FILE: \033[0m")
