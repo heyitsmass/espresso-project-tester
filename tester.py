@@ -126,10 +126,10 @@ async def main(phase:int=1):
 
   failed = [] 
 
-  item = [key for key, value in args._get_kwargs()]
+  parsedOptions = [key for key, value in args._get_kwargs()]
 
-  if 'compile' in item and args.compile:   
-    if args.silent: 
+  if 'compile' in parsedOptions and args.compile:   
+    if 'silent' in parsedOptions and args.silent: 
       print("Silently compiling...")
       subprocess.run(["ant"], stdout=subprocess.PIPE, cwd=f"./Phase{args.phase}")
     else: 
@@ -137,8 +137,8 @@ async def main(phase:int=1):
       
     print("Compiled.")
 
-  if 'filename' not in item: 
-    if 'recheck' in item and args.recheck: 
+  if 'filename' not in parsedOptions: 
+    if 'recheck' in parsedOptions and args.recheck: 
       print("Rechecking")
       try: 
         with open('failed.txt', 'r') as failedFile: 
