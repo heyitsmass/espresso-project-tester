@@ -106,8 +106,7 @@ async def test(file, phase, verbose=False):
 
   else: 
     print(f"\033[31m FAILED INITIAL CHECK\033[0m")
-    print(diff) 
-    if verbose: 
+    if verbose or args.verbose: 
       subprocess.run(
         ["diff", "-y", "-t", "user", "ref"]
       )
