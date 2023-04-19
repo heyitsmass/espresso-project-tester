@@ -84,14 +84,14 @@ By default this will test every file inside of the `Espresso/GoodTests` folder a
 >Ensure there does not exist the same filename inside of GoodTests and BadTests, if it does the full file path has to be specific; The script will output the potential file path for you if this happens. 
 #### Example: 
 ```
-> ~ % python3 tester.py 6 -c single Small.java`
+> python3 tester.py 6 -c single Small.java`
 > Exception : Multiple file locations found for same file. Retry with exact filepath.
 >             ./unit_tests/6/Espresso/GoodTests/Small.java or 
 > 	      ./unit_tests/6/Espresso_Plus/BadTests/Small.java
 ```
 #### Solution: 
 
-`> ~ % python3 tester.py 6 -c single ./unit_tests/6/Espresso/GoodTests/Small.java`
+`python3 tester.py 6 -c single ./unit_tests/6/Espresso/GoodTests/Small.java`
 
 ## Expected Workflow
 
