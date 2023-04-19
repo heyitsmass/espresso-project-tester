@@ -139,7 +139,7 @@ async def main(phase:int=1):
     print("Compiled.")
 
   if 'filename' not in item: 
-    if args.recheck: 
+    if 'recheck' in item and args.recheck: 
       print("Rechecking")
       try: 
         with open('failed.txt', 'r') as failedFile: 
