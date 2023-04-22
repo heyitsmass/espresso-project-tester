@@ -61,13 +61,27 @@ It is expected for this tester to be inside of this folder hierarchy:
 
 ## Usage: 
 To get you started (From the parent_folder): 
-```
-> cd parent_folder 
-> git clone https://github.com/heyitsmass/espresso-project-tester
-> mv ./espresso-project-tester/tester.py ../
-> rm -r espresso-project-tester/ --force 
-> python3 tester.py 6 
-```
+
+> cd into the parent folder 
+
+`cd parent_folder`
+
+> Clone the repository into the parent folder
+
+`git clone https://github.com/heyitsmass/espresso-project-tester`
+
+> Move the tester from the cloned repo folder into the parent folder
+
+`mv ./espresso-project-tester/tester.py ../`
+
+> Remove the unnecessary repo files
+
+`rm -r espresso-project-tester/ --force`
+
+> Run the tester
+
+`python3 tester.py 6`
+
 By default this will test every file inside of the `Espresso/GoodTests` folder and create a failed.txt file
 
 ## Exceptions: 
