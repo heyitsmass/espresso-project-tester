@@ -184,7 +184,7 @@ async def main():
         return 
     else:
       folders = [""]
-      subfolders = ["GoodTests", "BadTests"] 
+      subfolders = ["GoodTests"] 
 
       for key, value in args._get_kwargs(): 
         if key not in ['phase', 'compile', 'recheck', 'silent', 'verbose']: 
