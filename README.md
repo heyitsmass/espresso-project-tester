@@ -60,9 +60,12 @@ It is expected for this tester to be inside of this folder hierarchy:
 ```
 
 ## Usage: 
-To get you started: 
+To get you started (From the parent_folder): 
 ```
 > cd parent_folder 
+> git clone https://github.com/heyitsmass/espresso-project-tester
+> mv ./espresso-project-tester/tester.py ../
+> rm -r espresso-project-tester/ --force 
 > python3 tester.py 6 
 ```
 By default this will test every file inside of the `Espresso/GoodTests` folder and create a failed.txt file
