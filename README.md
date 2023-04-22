@@ -60,7 +60,7 @@ It is expected for this tester to be inside of this folder hierarchy:
 ```
 
 ## Usage: 
-To get you started (From the parent_folder): 
+To get you started: 
 
 > cd into the parent folder 
 
