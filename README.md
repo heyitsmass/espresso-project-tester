@@ -3,7 +3,7 @@
 Robust (phase 6) Espresso Project tester for CS460
 
 # Features: 
-## Asynchronous Testing
+## Synchronous Testing
   > Forces each test to complete before another begins; No jumbled output
 ## Silent Compilation 
 > Hides the extensive parser building stage outputting to the console, saves on space and focuses you to what's necessary!
