@@ -4,7 +4,7 @@ import subprocess
 import os 
 from argparse import ArgumentParser
 import re 
-
+import sys 
 
 parser = ArgumentParser() 
 
@@ -219,14 +219,11 @@ async def main():
       for root, dirs, files in os.walk(testsFolder): 
         for f in files: 
           if f.lower() == args.filename or f == args.filename: 
-
-
             if fileLoc: 
               raise RuntimeError(
                 f"Multiple file locations found for same file. Retry with exact filepath." +
                 f"\n\t{fileLoc}, or \n\t{os.path.join(root, f)}")
             else: 
-              print(f, args.filename) 
               fileLoc = os.path.join(root, f)
 
       if fileLoc == "": 
@@ -240,7 +237,9 @@ async def main():
       await test(file, True) 
 
 if __name__ == "__main__":
-  loop = asyncio.get_event_loop()
-  result = loop.run_until_complete(main())
-  #Python >= 3.7
-  #asyncio.run(main())
+
+  if(sys.version_info.minor < 7): 
+    loop = asyncio.get_event_loop()
+    result = loop.run_until_complete(main())
+  else: 
+    asyncio.run(main())
