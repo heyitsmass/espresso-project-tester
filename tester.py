@@ -175,7 +175,7 @@ async def main():
             ret = await test(Path(file[:-1])) 
 
             if ret: 
-              failedFiles.append(f"./{file}\n") 
+              failedFiles.append(f"{file}") 
         
         writeData(failedFiles, "failed.txt") 
 
@@ -238,8 +238,10 @@ async def main():
 
 if __name__ == "__main__":
 
-  if sys.version_info.minor < 7: 
+  if(sys.version_info.minor < 7): 
     loop = asyncio.get_event_loop()
     result = loop.run_until_complete(main())
   else: 
     asyncio.run(main())
+
+
