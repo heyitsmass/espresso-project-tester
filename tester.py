@@ -240,6 +240,7 @@ async def main():
       await test(file, True) 
 
 if __name__ == "__main__":
-  asyncio.run(main())
-
-
+  loop = asyncio.get_event_loop()
+  result = loop.run_until_complete(main())
+  #Python >= 3.7
+  #asyncio.run(main())
