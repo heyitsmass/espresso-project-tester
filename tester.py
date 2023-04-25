@@ -238,7 +238,7 @@ async def main():
 
 if __name__ == "__main__":
 
-  if(sys.version_info.minor < 7): 
+  if sys.version_info.minor < 7: 
     loop = asyncio.get_event_loop()
     result = loop.run_until_complete(main())
   else: 
