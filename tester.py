@@ -60,7 +60,7 @@ parser.add_argument("-v", "--verbose",
 
 args = parser.parse_args()
 
-def readData(filename:str) -> list[str]: 
+def readData(filename:str): 
   with open(filename, 'r') as file: 
     return file.readlines() 
 
@@ -69,7 +69,7 @@ def writeData(data:list, filename:str):
     file.writelines(data) 
 
 
-async def test(file:Path, verbose:bool=False) -> Path: 
+async def test(file:Path, verbose:bool=False): 
   projectDir = f"./Phase{args.phase}"
   print(f"\033[33mTesting {file.name}:\033[0m", end="")
   with open('user', 'w') as user, open('ref', 'w') as ref:
@@ -210,21 +210,26 @@ async def main():
       writeData(failedFiles, "failed.txt")
   else: 
     file = None
+
     if './unit_tests' in args.filename: 
       file = Path(args.filename) 
 
     if not file: 
-      fileLoc:str = "" 
-
+      fileLoc = ""
       for root, dirs, files in os.walk(testsFolder): 
-        for file in files: 
-          if file.lower() == args.filename: 
+        for f in files: 
+          if f.lower() == args.filename or f == args.filename: 
+
+
             if fileLoc: 
               raise RuntimeError(
                 f"Multiple file locations found for same file. Retry with exact filepath." +
-                f"\n\t{fileLoc}, or \n\t{os.path.join(root, file)}")
+                f"\n\t{fileLoc}, or \n\t{os.path.join(root, f)}")
+            else: 
+              print(f, args.filename) 
+              fileLoc = os.path.join(root, f)
 
-      if not fileLoc: 
+      if fileLoc == "": 
         raise RuntimeError("Unable to find file. (Invalid name?)")
       
       if args.compile: 
