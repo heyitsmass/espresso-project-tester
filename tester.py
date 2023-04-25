@@ -143,9 +143,9 @@ async def test(file:Path, verbose:bool=False):
       print(f"\033[31mFILE VALIDATION FAILED \033[0m", end="")
       print(f":{err}" if verbose or args.verbose else '')
 
-      #We're missing filenames!?! Error in the main file
+      #We're missing filenames!?! Error in the test file (missing symbol or something)
       if type(err) == IndexError: 
-        print(f"\033[31mERROR IN MAIN FILE\033[0m")
+        print(f"\033[31mERROR IN TEST FILE\033[0m")
         if verbose or args.verbose:
           print(f': {errData}') 
         return file 
