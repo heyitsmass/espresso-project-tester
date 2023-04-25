@@ -253,7 +253,7 @@ async def main():
       fileLoc = ""
       for root, dirs, files in os.walk(testsFolder): 
         for f in files: 
-          if f.lower() == args.filename or f == args.filename: 
+          if f.lower() == args.filename.lower(): 
             if fileLoc: #We found multiple filenames
               raise RuntimeError(
                 f"Multiple file locations found for same file. Retry with exact filepath." +
