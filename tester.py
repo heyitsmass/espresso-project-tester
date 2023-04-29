@@ -283,7 +283,9 @@ if __name__ == "__main__":
 
   if args.phase not in range(1, 7): 
     raise argparse.ArgumentTypeError("Maximum phase number is 6")
-
+  if args.phase < 6: 
+    print("Testing files from an unassociated test folder may have unexpected results.")
+        
   if sys.version_info.minor < 7:  #Asyncio does not support .run() on python < 3.7 
     loop = asyncio.get_event_loop()
     result = loop.run_until_complete(main())
