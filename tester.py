@@ -242,7 +242,7 @@ async def main():
               if file: 
                 failedFiles.append(f"./{file}\n")
       except FileNotFoundError as e: 
-        print("ERROR: UNIT_TESTS FODLER DOES NOT EXIST") 
+        print("ERROR: UNIT_TESTS FOLDER DOES NOT EXIST") 
         return 
       
       writeData(failedFiles, "failed.txt")
@@ -276,7 +276,7 @@ async def main():
 
         await test(file, True) #test the file
     except FileNotFoundError as e: 
-      print("ERROR: UNIT_TESTS FODLER DOES NOT EXIST")
+      print("ERROR: UNIT_TESTS FOLDER DOES NOT EXIST")
       return 
 
 if __name__ == "__main__":
