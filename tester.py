@@ -2,11 +2,11 @@ import asyncio
 from pathlib import Path 
 import subprocess 
 import os 
-from argparse import ArgumentParser
+import argparse
 import re 
 import sys 
 
-parser = ArgumentParser() 
+parser = argparse.ArgumentParser() 
 
 parser.add_argument("phase", 
                     help="The current phase number.", 
@@ -231,15 +231,19 @@ async def main():
         compile() 
 
       # Grab all the files from our parsed options (in order) and test them
-      for folder in folders: 
-        for subfolder in subfolders: 
-          testDir = testsFolder + f'/Espresso{folder}/{subfolder}'
-          files = Path(testDir) 
-          print(f"\033[36mEspresso{folder}: \033[34m{subfolder}\033[0m")
-          for f in sorted(files.iterdir()): 
-            file = await test(f) 
-            if file: 
-              failedFiles.append(f"./{file}\n")
+      try:
+        for folder in folders: 
+          for subfolder in subfolders: 
+            testDir = testsFolder + f'/Espresso{folder}/{subfolder}'
+            files = Path(testDir) 
+            print(f"\033[36mEspresso{folder}: \033[34m{subfolder}\033[0m")
+            for f in sorted(files.iterdir()): 
+              file = await test(f) 
+              if file: 
+                failedFiles.append(f"./{file}\n")
+      except FileNotFoundError as e: 
+        print("ERROR: UNIT_TESTS FODLER DOES NOT EXIST") 
+        return 
       
       writeData(failedFiles, "failed.txt")
   else: 
@@ -249,29 +253,36 @@ async def main():
     if './unit_tests' in args.filename: 
       file = Path(args.filename) #If the full filepath was provided, test the file
 
-    if not file: #Otherwise walk the unit_tests directory and find the file
-      fileLoc = ""
-      for root, dirs, files in os.walk(testsFolder): 
-        for f in files: 
-          if f.lower() == args.filename.lower(): 
-            if fileLoc: #We found multiple filenames
-              raise RuntimeError(
-                f"Multiple file locations found for same file. Retry with exact filepath." +
-                f"\n\t{fileLoc}, or \n\t{os.path.join(root, f)}")
-            else: 
-              fileLoc = os.path.join(root, f)
+    try: 
+      if not file: #Otherwise walk the unit_tests directory and find the file
+        fileLoc = ""
+        for root, dirs, files in os.walk(testsFolder): 
+          for f in files: 
+            if f.lower() == args.filename.lower(): 
+              if fileLoc: #We found multiple filenames
+                raise RuntimeError(
+                  f"Multiple file locations found for same file. Retry with exact filepath." +
+                  f"\n\t{fileLoc}, or \n\t{os.path.join(root, f)}")
+              else: 
+                fileLoc = os.path.join(root, f)
 
-      if not fileLoc: 
-        raise RuntimeError("Unable to find file. (Invalid name?)")
-      
-      if args.compile: 
-        compile() 
+        if not fileLoc: 
+          raise RuntimeError("Unable to find file. (Invalid name?)")
+        
+        if args.compile: 
+          compile() 
 
-      file = Path(fileLoc)
+        file = Path(fileLoc)
 
-      await test(file, True) #test the file
+        await test(file, True) #test the file
+    except FileNotFoundError as e: 
+      print("ERROR: UNIT_TESTS FODLER DOES NOT EXIST")
+      return 
 
 if __name__ == "__main__":
+
+  if args.phase not in range(1, 7): 
+    raise argparse.ArgumentTypeError("Maximum phase number is 6")
 
   if sys.version_info.minor < 7:  #Asyncio does not support .run() on python < 3.7 
     loop = asyncio.get_event_loop()
