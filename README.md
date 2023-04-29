@@ -5,7 +5,7 @@ Alternative phase 6 tester with (eventually deprecated) additions that may make 
 # Features: 
 ## Synchronous Testing
   > Forces each test to complete before another begins; No jumbled output
-## User Specified File Ignorance: 
+## User Specified File Ignorance 
   > You can define a list of files in an external file to ignore in the case of known issues with the reference compiler.
 #### Example (EspressoPegs.java): 
 ![Gyazo](https://i.gyazo.com/ca2db6f01c51d43ad20e77504324b9d9.png)
