@@ -60,6 +60,8 @@ parser.add_argument("-v", "--verbose",
 
 args = parser.parse_args()
 
+ignored_files = []
+
 def readData(filename:str): 
 
   """Read the lines of a file and return them as an array.
@@ -89,6 +91,11 @@ async def test(file:Path, verbose:bool=False):
     verbose -- Determines verbosity of the output if args.verbose is not provided
   """
 
+  if file.name.lower() in ignored_files: 
+    print(f"\033[33mUser Specified Ignore: \033[0m{file.name}\033[0m")
+    return 
+
+
   projectDir = f"./Phase6" #The project dir 
   print(f"\033[33mTesting {file.name}:\033[0m", end="")
   with open('user', 'w') as user, open('ref', 'w') as ref:
@@ -103,6 +110,7 @@ async def test(file:Path, verbose:bool=False):
     #Run the diff check, ignore file names for now, they're always non-matching
     diff = subprocess.run(["diff", "-I", ".*: '.*'", "user", "ref"], 
                           stdout=subprocess.PIPE, encoding='utf8').stdout 
+  
 
   if not diff: 
     print(f"\033[32m PASSED INITIAL CHECK\033[0m")
@@ -238,11 +246,12 @@ async def main():
             files = Path(testDir) 
             print(f"\033[36mEspresso{folder}: \033[34m{subfolder}\033[0m")
             for f in sorted(files.iterdir()): 
-              file = await test(f) 
-              if file: 
-                failedFiles.append(f"./{file}\n")
+              if f.name.lower() not in ignored_files: 
+                file = await test(f) 
+                if file: 
+                  failedFiles.append(f"./{file}\n")
       except FileNotFoundError as e: 
-        print("ERROR: UNIT_TESTS FOLDER DOES NOT EXIST") 
+        print("ERROR: UNIT_TESTS FODLER DOES NOT EXIST") 
         return 
       
       writeData(failedFiles, "failed.txt")
@@ -276,11 +285,17 @@ async def main():
 
         await test(file, True) #test the file
     except FileNotFoundError as e: 
-      print("ERROR: UNIT_TESTS FOLDER DOES NOT EXIST")
+      print("ERROR: UNIT_TESTS FODLER DOES NOT EXIST")
       return 
 
 if __name__ == "__main__":
 
+  if not os.path.isfile('ignore'): # Check if the ignore file has been created
+    with open('ignore', 'w'):   # If not create it
+      ... 
+  else: 
+    ignored_files = [e.lower() for e in readData('ignore')] # Otherwise populate our list with lowercase filenames
+    
   if args.phase not in range(1, 7): 
     raise argparse.ArgumentTypeError("Maximum phase number is 6")
 
