@@ -89,7 +89,7 @@ async def test(file:Path, verbose:bool=False):
     verbose -- Determines verbosity of the output if args.verbose is not provided
   """
 
-  projectDir = f"./Phase{args.phase}" #The project dir 
+  projectDir = f"./Phase6" #The project dir 
   print(f"\033[33mTesting {file.name}:\033[0m", end="")
   with open('user', 'w') as user, open('ref', 'w') as ref:
     subprocess.run(
@@ -172,9 +172,9 @@ def compile():
   if args.silent: 
     print("Silently Compiling...") 
     #PIPE the output to silently compile.
-    subprocess.run(["ant"], stdout=subprocess.PIPE, cwd=f"./Phase{args.phase}")
+    subprocess.run(["ant"], stdout=subprocess.PIPE, cwd=f"./Phase6")
   else: 
-    subprocess.run(["ant"], cwd=f"./Phase{args.phase}")     
+    subprocess.run(["ant"], cwd=f"./Phase6")     
 
   print("Compiled.")
   
@@ -278,5 +278,3 @@ if __name__ == "__main__":
     result = loop.run_until_complete(main())
   else: 
     asyncio.run(main())
-
-
