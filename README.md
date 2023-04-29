@@ -1,10 +1,14 @@
 
 # Espresso-Project Tester
-Robust (phase 6) Espresso Project tester for CS460
+Alternative phase 6 tester with (potentially unnecessary) additions that may make the main version confusing or bloated.
 
 # Features: 
 ## Synchronous Testing
   > Forces each test to complete before another begins; No jumbled output
+## User Specified File Ignorance: 
+  > You can define a list of files in an external file to ignore in the case of known issues with the reference compiler.
+#### Example: 
+![Gyazo](https://i.gyazo.com/ca2db6f01c51d43ad20e77504324b9d9.png)
 ## Silent Compilation 
 > Hides the extensive parser building stage outputting to the console, saves on space and focuses you to what's necessary!
 ## Single file checking 
