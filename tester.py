@@ -101,7 +101,7 @@ async def test(file:Path, verbose:bool=False):
     )
 
     #Run the diff check, ignore file names for now, they're always non-matching
-    diff = subprocess.run(["diff", "-I", ".*: '.*'", "user", "ref"], 
+    diff = subprocess.run(["diff", "-I", ".*file : '.*'", "user", "ref"], 
                           stdout=subprocess.PIPE, encoding='utf8').stdout 
 
   if not diff: 
