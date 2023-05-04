@@ -157,7 +157,7 @@ async def test(file:Path, verbose:bool=False):
           cwd=projectDir
         )
 
-      pass 
+      return file 
   else: 
     #If we failed the initial check, output the diff if requested.
     print(f"\033[31m FAILED INITIAL CHECK\033[0m")
