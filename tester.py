@@ -156,7 +156,7 @@ async def test(file:Path, verbose:bool=False):
           ["diff", "-y", userFileName, refFileName], 
           cwd=projectDir
         )
-
+      pass
       return file 
   else: 
     #If we failed the initial check, output the diff if requested.
